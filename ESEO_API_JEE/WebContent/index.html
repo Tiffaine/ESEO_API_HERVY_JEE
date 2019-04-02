@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<title>ESEO TWIC</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+</head>
+
+<body>
+	<div style="width: 520px; margin: 0px auto; margin-top: 30px;">
+		<form method="post" action="CalculerDistanceServ">
+			<h2>Sélectionnez deux villes</h2>
+			<select class="chosen" style="width: 250px;" id="selectVille1">
+
+			</select> <select class="chosen" style="width: 250px;" id="selectVille2">
+			</select> <select class="chosen" style="width: 250px;" id="selectVille3">
+				<Option>coucou
+				<Option>hello
+				<Option>hi
+
+			</select>  <input type="submit" id="submit">
+		</form>
+	</div>
+
+	<script type="text/javascripSt">
+	$(".chosen").chosen();
+</script>
+</body>
+
+<script type="text/javascript">
+
+var request = new XMLHttpRequest()
+request.open('GET','http://localhost:8181/testget',true);
+var txt,x="";
+request.onreadystatechange = function(){
+var data = JSON.parse(this.response);
+var listeVille =[]
+	if (request.status >= 200 && request.status < 400) {
+		
+        data.forEach(ville => {
+        	var newLength = listeVille.push(ville.nomCommune);
+        })
+      } else {
+        console.log('error');
+      }
+	const $select = document.getElementById("selectVille1")
+
+	$select.innerHTML = "<option value=' '>Choisissez une ville </option>"; 
+	listeVille.forEach(listeVille=>{
+		const $opt = document.createElement("option");
+		$opt.value = listeVille; 
+		$opt.textContent = listeVille; 
+		$select.appendChild($opt);
+	})
+	
+	const $select2 = document.getElementById("selectVille2")
+
+	$select2.innerHTML = "<option value=' '>Choisissez une seconde ville </option>"; 
+	listeVille.forEach(listeVille=>{
+		const $opt = document.createElement("option");
+		$opt.value = listeVille; 
+		$opt.textContent = listeVille; 
+		$select2.appendChild($opt);
+	})
+	
+    }
+request.send()
+
+</script>
+</html>
