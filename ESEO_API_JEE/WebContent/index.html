@@ -16,25 +16,19 @@
 	<div style="width: 520px; margin: 0px auto; margin-top: 30px;">
 		<form method="post" action="CalculerDistanceServ">
 			<h2>Sélectionnez deux villes</h2>
-			<select class="chosen" style="width: 250px;" id="selectVille1">
-
-			</select> <select class="chosen" style="width: 250px;" id="selectVille2">
-			</select> <select class="chosen" style="width: 250px;" id="selectVille3">
-				<Option>coucou
-				<Option>hello
-				<Option>hi
-
-			</select>  <input type="submit" id="submit">
+			<select style="width: 250px;" id="selectVille1" name="selectVille1">
+			</select> <select style="width: 250px;" id="selectVille2" name="selectVille2">
+			
+			</select>
+			<input type="submit" value="calculer la distance"/>
 		</form>
-	</div>
-
-	<script type="text/javascripSt">
+	
+</div>
+	<!-- <script type="text/javascripSt">
 	$(".chosen").chosen();
-</script>
-</body>
+</script>-->
 
-<script type="text/javascript">
-
+	<script>
 var request = new XMLHttpRequest()
 request.open('GET','http://localhost:8181/testget',true);
 var txt,x="";
@@ -55,6 +49,7 @@ var listeVille =[]
 	listeVille.forEach(listeVille=>{
 		const $opt = document.createElement("option");
 		$opt.value = listeVille; 
+		console.log(listeVille);
 		$opt.textContent = listeVille; 
 		$select.appendChild($opt);
 	})
@@ -73,4 +68,6 @@ var listeVille =[]
 request.send()
 
 </script>
+
+</body>
 </html>
