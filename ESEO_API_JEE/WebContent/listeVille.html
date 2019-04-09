@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+</head>
+
+<body>
+	<table id="matable">
+		<tr>
+			<td>a</td>
+			<td>r</td>
+		</tr>
+		<tr>
+			<td>b</td>
+			<td>i</td>
+		</tr>
+		<tr>
+			<td>c</td>
+			<td>v</td>
+		</tr>
+		<tr>
+			<td>d</td>
+			<td>b</td>
+		</tr>
+		<tr>
+			<td>e</td>
+			<td>o</td>
+		</tr>
+		<tr>
+			<td>f</td>
+			<td>z</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>23</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>25</td>
+		</tr>
+
+	</table>
+	Alphabétique
+	<br /> colonne 1
+	<br />
+	<input type="button" onclick="sortTable('matable',0,DESC)"
+		value="tri desc col 1" />
+	<input type="button" onclick="sortTable('matable',0,ASC)"
+		value="tri asc col1" />
+	<br /> colonne 2
+	<br />
+	<input type="button" onclick="sortTable('matable',1,DESC)"
+		value="tri desc col2" />
+	<input type="button" onclick="sortTable('matable',1,ASC)"
+		value="tri asc col2" />
+	<br />
+	<br />
+
+	<style type="text/css">
+input {
+	width: 100px;
+}
+
+td {
+	border: solid 1px black;
+	width: 80px;
+}
+
+table {
+	border-collapse: collapse;
+}
+</style>
+	<title>Table sorter</title>
+	<script type='text/javascript'>
+		function DESC(a, b) {
+			a = a[1]
+			b = b[1]
+			if (a > b)
+				return -1
+			if (a < b)
+				return 1
+			return 0
+		}
+
+		function ASC(a, b) {
+			a = a[1]
+			b = b[1]
+			if (a > b)
+				return 1
+			if (a < b)
+				return -1
+			return 0
+		}
+
+		function sortTable(tid, col, ord) {
+			mybody = document.getElementById(tid).getElementsByTagName('tbody')[0]
+			lines = mybody.getElementsByTagName('tr')
+			var sorter = new Array()
+			sorter.length = 0
+			var i = -1;
+			while (lines[++i]) {
+				sorter.push([ lines[i],
+						lines[i].getElementsByTagName('td')[col].innerHTML ])
+			}
+			sorter.sort(ord)
+			j = -1
+			while (sorter[++j]) {
+				mybody.appendChild(sorter[j][0])
+			}
+
+		}
+	</script>
+</body>
+</html>

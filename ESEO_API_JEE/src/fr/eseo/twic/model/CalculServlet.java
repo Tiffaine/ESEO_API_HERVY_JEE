@@ -43,13 +43,15 @@ public class CalculServlet extends HttpServlet {
 		String lng1 = request.getParameter("lng1");
 		String lat2 = request.getParameter("lat2");
 		String lng2 = request.getParameter("lng2");
+
 		double lat1Double = Double.parseDouble(lat1);
 		double lng1Double = Double.parseDouble(lng1);
 		double lat2Double = Double.parseDouble(lat2);
 		double lng2Double = Double.parseDouble(lng2);
 	
+	
 		//calcul sur un repere plan 
-		double distance = Math.sqrt((lng2Double-lng1Double)*(lng2Double-lng1Double)+(lat2Double-lat1Double)*(lat2Double-lat1Double));
+		double distance = Math.acos(Math.sin(lat1Double)*Math.sin(lat2Double) + Math.cos(lat1Double) * Math.cos(lat2Double)*Math.cos(lng2Double-lng1Double))*6371;
 
 		RequestDispatcher dispat = request.getRequestDispatcher("affichageDistance.jsp"); 
 		HttpSession session = request.getSession(); 
