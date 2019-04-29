@@ -32,8 +32,8 @@ public class CalculerDistanceServ extends HttpServlet {
 		String ville1 = request.getParameter("selectVille1");
 		String ville2 = request.getParameter("selectVille2");
 
-		System.out.println("ville1 "+ville1);
-		System.out.println("ville2 "+ville2);
+		System.out.println("ville1 coucou"+ville1);
+		System.out.println("ville2 coucou"+ville2);
 		HttpSession session = request.getSession(); 
 		session.setAttribute("ville1", ville1);
 		session.setAttribute("ville2", ville2);

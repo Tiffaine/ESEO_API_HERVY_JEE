@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Distance entre les deux villes : </title>
 </head>
 <body>
 	distance

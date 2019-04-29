@@ -37,18 +37,18 @@ var ville1 = document.getElementById("ville1_session").value
 var ville2 = document.getElementById("ville2_session").value
 
 function trouverVille(ville,id,latitude, longitude,hiddenLatitude, hiddenLongitude){
-	 request.open('GET', 'http://localhost:8181/testgetfiltre?value='+ ville, true)
+	 request.open('GET', 'http://localhost:8181/testgetfiltre?nomCommune='+ ville, true)
      request.onload = function() {
 		 var data = JSON.parse(this.response)
 		  if (request.status >= 200 && request.status < 400) {
-			  data.forEach(ville => {
-                  console.log(ville.nom)
-                  console.log(ville.latitude)
-                  console.log(ville.longitude)
-                  var variable = ville.nom
-                  document.getElementById(id).textContent = variable
-                  document.getElementById(latitude).textContent = ville.latitude
-                  document.getElementById(longitude).textContent = ville.longitude 
+			  data.forEach((ville) => {
+                  console.log(ville.nom);
+                  console.log(ville.latitude);
+                  console.log(ville.longitude);
+                  var variable = ville.nom;
+                  document.getElementById(id).textContent = variable;
+                  document.getElementById(latitude).textContent = ville.latitude;
+                  document.getElementById(longitude).textContent = ville.longitude;
                   document.getElementById(hiddenLatitude).value=ville.latitude; 
                   document.getElementById(hiddenLongitude).value=ville.longitude; 
 			  })
@@ -63,8 +63,7 @@ function trouverVille(ville,id,latitude, longitude,hiddenLatitude, hiddenLongitu
 trouverVille(ville1,"ville1id","ville1latitude","ville1longitude","lat1","lng1");
 setTimeout(function(){
 	trouverVille(ville2,"ville2id","ville2latitude","ville2longitude","lat2","lng2");
-},1000)
-
+},3000)
 
 
 </script>
